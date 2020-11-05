@@ -13,9 +13,16 @@ The function should:
   2. Create and return an object using the received values  
 */
 
-function createMenuItem(/*Your code here*/){
-    /*Your code here*/
+function createMenuItem(name, price, category){
+    let newMenuItem = {
+      name: name,
+      price: price,
+      category: category
+    }
+    return newMenuItem;
 }
+
+console.log(createMenuItem("Yogurt Parfait", 3, "Breakfast"));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Test your createMenuItems function by doing the following:
@@ -26,7 +33,9 @@ Test your createMenuItems function by doing the following:
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
 
-
+// console.log(createMenuItem("French Fries", 2, "Side"));
+// console.log(createMenuItem("Cesear Salad", 5, "Lunch"));
+// console.log(createMenuItem("Roast Beef Sandwich", 6, "Lunch"));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 You're having a lunch special! 25% off for teachers and students, 10% off for everyone else. Add a method to the 
@@ -44,10 +53,17 @@ Using the burger object below do the following:
 export const burger = {
   name: "Burger", 
   price: 18, 
-  category: "Lunch", 
-  /*Your code here*/
-}
+  category: "Lunch",
+  discount: function(customerOccupation) {
+    if (customerOccupation === "teacher" || customerOccupation === "student") {
+      return 18 - this.price * 0.25;
+    } else {
+      return 18 - this.price * 0.10;
+    }
+  }
+};
 
+console.log(burger.discount("teacher"));
 
 
 ///////////////Reviews (MVP)///////////////////
@@ -67,7 +83,7 @@ Using the reviews array above:
   1. log only Julius' feedback to the console
 */
 
-
+console.log(reviews[5].feedback);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -76,7 +92,11 @@ Using the reviews array above do the following:
   2. log the whole array to the console, make sure the new review is inside of it   
 */
 
-
+function addReview(array, name, rating, feedback) {
+  array.push({name, rating, feedback})
+  return array;
+}
+console.log(addReview(reviews, "Moss", 5, "Ah, Mesijos. Nice atmosphere. Food's great."));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Reyna's feedback is missing! Use what you know to do the following:
@@ -84,9 +104,15 @@ Reyna's feedback is missing! Use what you know to do the following:
   2. log the reviews array to the console to check your work
 */
 
-
-
-
+// function updateReview(array, cusName, newFeedback){
+//   for (i in array){
+//     if(array[i].name.includes(cusName)){
+//       array[i].feedback = newFeedback;
+//     }
+//   }
+//   return array;
+// }
+// console.log(updateReview(reviews, "Reyna", "this place is chill with really cool people, great for getting work done on weekdays"));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Write a function to return a review based on the index of the review in the array.
